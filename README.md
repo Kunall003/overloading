@@ -1,52 +1,11 @@
-Overloading
-Aim:
-To demonstrate the concept of function and operator overloading in programming.
+# Constructor-Overloading
 
-Theory:
+## Aim:
+To demonstrate the concept of function overloading in programming, showcasing how multiple functions with the same name can be defined with different parameters.
+
+## Theory:
 Function Overloading is a feature in many programming languages (like C++, Java, and Python) that allows the creation of multiple functions with the same name, provided they have different parameter lists. This increases the readability of the code and allows functions to perform similar tasks with different types or numbers of inputs.
 
-Operator Overloading is a feature in C++ that allows developers to redefine the way operators work for user-defined types (like classes). This enhances the readability and usability of the code by allowing intuitive operations on objects.
-
-Key Points
-Same Operator: Operators are overloaded to work with user-defined types.
-Different Implementation: The implementation of the operator is customized for the user-defined type.
-Compile-Time Polymorphism: Operator overloading is resolved at compile time.
-Syntax
-#include <iostream>
-using namespace std;
-
-class Complex {
-private:
-    double real;
-    double imag;
-public:
-    // Constructor
-    Complex(double r = 0, double i = 0) : real(r), imag(i) {}
-
-    // Overload + operator to add two Complex numbers
-    Complex operator + (const Complex& obj) {
-        Complex temp;
-        temp.real = real + obj.real;
-        temp.imag = imag + obj.imag;
-        return temp;
-    }
-
-    // Overload << operator to print Complex numbers
-    friend ostream& operator << (ostream& out, const Complex& c);
-};
-
-// Definition of << operator
-ostream& operator << (ostream& out, const Complex& c) {
-    out << c.real << " + " << c.imag << "i";
-    return out;
-}
-
-int main() {
-    Complex c1(3.0, 4.0), c2(1.0, 2.0);
-    Complex c3 = c1 + c2; // Calls Complex operator + (const Complex&)
-    cout << "Sum of c1 and c2: " << c3 << endl; // Calls ostream& operator << (ostream&, const Complex&)
-    return 0;
-}
 Key Points:
 
 1)Same Name: Functions share the same name.
@@ -55,7 +14,8 @@ Key Points:
 
 3)Compile-Time Polymorphism: Overloading is resolved at compile time.
 
-Syntax:
+### Syntax:
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -76,54 +36,45 @@ int add(int a, int b, int c) {
 
 int main() {
     cout << "Sum of 2 and 3: " << add(2, 3) << endl; // Calls int add(int, int)
-    cout << "Sum of 2.5 and 3.5: " << ad
-Algorithm:
-Function Overloading:
-Start
+    cout << "Sum of 2.5 and 3.5: " << add(2.5, 3.5) << endl; // Calls double add(double, double)
+    cout << "Sum of 1, 2, and 3: " << add(1, 2, 3) << endl; // Calls int add(int, int, int)
+    return 0;
+}
+```
+## Algorithm:
 
-Initialize the Program
+### Function overloading:-
+
+1)Start
+
+2)Initialize the Program
 
 Begin the program by including necessary libraries (e.g., #include <iostream> in C++).
-Define Functions
+
+3)Define Functions
 
 Function 1: Define a function add(int a, int b) that returns the sum of two integers.
+
 Function 2: Define a function add(double a, double b) that returns the sum of two double values.
+
 Function 3: Define a function add(int a, int b, int c) that returns the sum of three integers.
-Main Function
+
+4)Main Function
 
 Start the main() function.
-Call Function 1: Invoke add(2, 3) and print the result.
-Call Function 2: Invoke add(2.5, 3.5) and print the result.
-Call Function 3: Invoke add(1, 2, 3) and print the result.
-End Program
+Call Function 1:
+Invoke add(2, 3) and store the result.
+Print the result of the addition of two integers.
 
-Return 0 to indicate successful execution of the program.
-End the main() function.
-Operator Overloading:
-Start
+Call Function 2:
+Invoke add(2.5, 3.5) and store the result.
+Print the result of the addition of two doubles.
 
-Initialize the Program
+Call Function 3:
+Invoke add(1, 2, 3) and store the result.
+Print the result of the addition of three integers.
 
-Begin the program by including necessary libraries (e.g., #include <iostream> in C++).
-Define Class
-
-Define a class Complex with private members real and imag to represent complex numbers.
-Constructor
-
-Define a constructor to initialize the real and imaginary parts of the complex number.
-Overload + Operator
-
-Define a member function Complex operator + (const Complex& obj) to overload the + operator for adding two complex numbers.
-Overload << Operator
-
-Define a friend function ostream& operator << (ostream& out, const Complex& c) to overload the << operator for printing complex numbers.
-Main Function
-
-Start the main() function.
-Create two Complex objects c1 and c2.
-Add c1 and c2 using the overloaded + operator and store the result in c3.
-Print c3 using the overloaded << operator.
-End Program
+4)End Program
 
 Return 0 to indicate successful execution of the program.
 End the main() function.
